@@ -357,7 +357,7 @@ class Recipe_Helper():
             
         return fig, axs
 
-    def regress_with_error(self, X,y, model=None, run_transforms=False, plot_train=True,  xlabel=None, ylabel=None):
+    def regress_with_error(self, X,y, model=None, run_transforms=False, plot_train=True,  xlabel=None, ylabel=None, visible=True):
         # Run the regression.  Sets attributes of self
         self.run_regress(X, y, model, run_transforms, plot_train=plot_train, xlabel=xlabel, ylabel=ylabel)
 
@@ -381,6 +381,10 @@ class Recipe_Helper():
             _= ax.set_xlabel(xlabel)
             _= ax.set_title(label + " Error")
             _= ax.legend()
+
+            if not visible:
+                plt.close(fig)
+                plt.close(fig)
 
         return fig, axs
         
